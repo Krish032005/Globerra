@@ -1,0 +1,55 @@
+.navbar{
+    backdrop-filter: blur(2px);
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    
+    padding-top: 70px ;
+    padding-left: 90px;
+    padding-right: 100px;
+    
+}
+.signed-in-btn{
+    margin-top: 12px;
+    transform: scale(1.5);
+}
+h1{
+    
+    color: white;
+    margin-left: 15px;
+    font-size: 2.5rem;
+}
+.nav-link{
+    color: white;
+}
+
+.navbar-nav{
+    margin-right: 15rem;
+}
+.navbar-nav li{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    font-size: 22px;
+    font-weight: 500;
+    
+}
+
+.login{
+    padding: 8px 20px 8px 20px;
+    background-color: black;
+    width: 10rem;
+    font-weight: bold;
+    border-radius: 2rem;
+    font-size: 20px;
+    font-family: Arial, Tahoma, "Bitstream Vera Sans", sans-serif;
+}
+
+
+
+
+
+
+
+
+

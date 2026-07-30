@@ -1,0 +1,132 @@
+.blog-nav{
+    background: 
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e");
+  background-size: cover;
+  background-position: center;
+}
+
+.blog-heading{
+    font-size: 50px;
+    font-weight: 900;
+    color: white;
+    text-align: center;
+    margin-top: 10rem;
+}
+.blog-text{
+    width: 70%;
+    justify-content: center;
+    margin-left: 14rem;
+}
+.blog-submit{
+     padding: 10px 20px 10px 20px;
+    background-color: black;
+    color: white;
+    width: 10rem;
+    font-weight:700;
+    font-size: larger;
+    border-radius: 2rem;
+    margin-top: 50px;
+    margin-left: 27rem;
+}
+.blog-footer{
+    margin-top: 16rem;
+}
+
+.feedback-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 25px;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 22px;
+  margin-top: 20px;
+  padding-bottom: 40px;
+}
+
+.review-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.review-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
+}
+
+.review-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 15px;
+}
+
+.review-avatar {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00bcd4, #007cf0);
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.review-user-info h5 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.review-user-info p {
+  margin: 2px 0 0;
+  font-size: 0.9rem;
+  color: #6b7280;
+  word-break: break-word;
+}
+
+.review-message {
+  font-size: 0.95rem;
+  color: #374151;
+  line-height: 1.6;
+  margin: 10px 0 18px;
+  flex-grow: 1;
+}
+
+.review-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 0.82rem;
+  color: #9ca3af;
+}
+
+.review-stars {
+  color: #fbbf24;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+.no-review-text {
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+}

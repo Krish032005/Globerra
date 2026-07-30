@@ -1,0 +1,183 @@
+.userprofile-page {
+  padding: 110px 40px 40px;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f8fbff 0%, #eef5ff 100%);
+}
+
+.userprofile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+  padding: 24px 28px;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.userprofile-header h2 {
+  margin: 0;
+  font-size: 2rem;
+  color: #1a1a1a;
+}
+
+.userprofile-header p {
+  margin: 8px 0 0;
+  color: #666;
+}
+
+.profile-section {
+  margin-top: 30px;
+}
+
+.section-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #0d3b66;
+  margin-bottom: 18px;
+}
+
+.profile-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.profile-info-card {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-info-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.14);
+}
+
+.trip-card,
+.booking-card {
+  padding: 20px;
+}
+
+.trip-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  gap: 10px;
+}
+
+.trip-card h4,
+.booking-body h4 {
+  margin: 0 0 10px;
+  color: #111;
+  font-size: 1.25rem;
+}
+
+.trip-card p,
+.booking-body p {
+  margin: 6px 0;
+  color: #444;
+}
+
+.generated-plan-box {
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 14px;
+  background: #f4f8ff;
+  border-left: 4px solid #0d6efd;
+}
+
+.booking-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 16px;
+}
+
+.booking-body {
+  padding-top: 4px;
+}
+
+.empty-text {
+  background: #fff;
+  padding: 20px;
+  border-radius: 14px;
+  color: #666;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+}
+
+@media (max-width: 768px) {
+  .userprofile-page {
+    padding: 100px 16px 30px;
+  }
+
+  .userprofile-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.trip-card-clickable {
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.trip-card-clickable:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.14);
+}
+
+.trip-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 18px 18px 0 0;
+}
+
+.trip-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.trip-card-clickable:hover .trip-image {
+  transform: scale(1.06);
+}
+
+.trip-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.15));
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 18px;
+}
+
+.trip-image-overlay h4 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.trip-card-content {
+  padding: 18px;
+}
+
+.generated-plan-box {
+  margin-top: 14px;
+  padding: 14px;
+  border-left: 4px solid #0d6efd;
+  background: #f4f7fb;
+  border-radius: 12px;
+}

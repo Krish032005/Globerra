@@ -1,0 +1,102 @@
+.homeContent-container {
+  width: 95%;
+  height: 90vh;
+  position: relative;
+  overflow: hidden;
+  justify-self: center;
+  border-radius: 25px;
+  margin-bottom: 5rem;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 30px 40px;
+  border-radius: 16px;
+}
+
+.overlay h1 {
+  font-family: Arial, Tahoma, "Bitstream Vera Sans", sans-serif;
+   font-weight: 700;
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.overlay p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.overlay button {
+  padding: 12px 24px;
+  border: none;
+  /* background:  rgba(27, 137, 159, 0.768); */
+  color: white;
+  border-radius: 25px;
+  font-size: 1.3rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.overlay button:hover {
+  /* background: ; */
+  transform: scale(1.05);
+}
+
+.first-tag{
+    background-color:  rgba(27, 137, 159, 0.768);
+     width: 250px;
+    padding: 5px 8px 5px 12px;
+    border-radius: 20px;
+}
+
+
+
+.homeContent-container::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25);
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .overlay {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .overlay h1 {
+    font-size: 2rem;
+  }
+
+  .overlay p {
+    font-size: 0.95rem;
+  }
+}

@@ -1,0 +1,252 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.loginone-page {
+  width: 100%;
+  min-height: 100vh;
+  background: url("https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1600&q=80")
+    no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.loginone-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.loginone-box {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(10px);
+  border-radius: 22px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+  padding: 32px 28px 24px;
+  z-index: 2;
+  animation: popUp 0.45s ease;
+}
+
+@keyframes popUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.close-btn {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+  transition: 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #000;
+  transform: rotate(90deg);
+}
+
+.loginone-box h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #1c1c1c;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.loginone-box p {
+  text-align: center;
+  color: #666;
+  font-size: 0.96rem;
+  margin-bottom: 22px;
+}
+
+.google-btn {
+  width: 100%;
+  border: 1px solid #ddd;
+  background: #fff;
+  color: #222;
+  padding: 13px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 0.96rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: 0.3s ease;
+}
+
+.google-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+.google-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 22px 0;
+}
+
+.divider span {
+  flex: 1;
+  height: 1px;
+  background: #ddd;
+}
+
+.divider h5 {
+  color: #777;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.loginone-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.input-group label {
+  font-size: 0.94rem;
+  color: #222;
+  font-weight: 600;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #d8d8d8;
+  border-radius: 12px;
+  outline: none;
+  font-size: 0.95rem;
+  transition: 0.3s ease;
+  background: #fff;
+}
+
+.input-group input:focus {
+  border-color: #c9973d;
+  box-shadow: 0 0 0 4px rgba(201, 151, 61, 0.12);
+}
+
+.extra-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  margin-top: -4px;
+}
+
+.extra-options label {
+  color: #555;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.extra-options a {
+  color:  rgb(32, 136, 216);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.extra-options a:hover {
+  text-decoration: underline;
+}
+
+.continue-btn {
+  width: 100%;
+  margin-top: 6px;
+  padding: 14px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #4098bb, #1f86d0);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.continue-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(201, 151, 61, 0.35);
+}
+
+.bottom-text {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.bottom-text span {
+  color:  rgb(32, 136, 216);
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.bottom-text span:hover {
+  text-decoration: underline;
+}
+
+.login-footer {
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid #e6e6e6;
+}
+
+.login-footer p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: #777;
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  .loginone-box {
+    max-width: 92%;
+    padding: 28px 18px 22px;
+    border-radius: 18px;
+  }
+
+  .loginone-box h2 {
+    font-size: 1.45rem;
+  }
+
+  .google-btn,
+  .continue-btn,
+  .input-group input {
+    padding: 12px;
+  }
+}

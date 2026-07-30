@@ -1,0 +1,268 @@
+.booking-page {
+  background: #f5f5f5;
+  padding: 30px 20px 60px;
+  min-height: 100vh;
+  margin-bottom: -2rem;
+}
+
+.booking-container {
+  max-width: 1250px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.booking-slider {
+  position: relative;
+  width: 100%;
+}
+
+.booking-main-image {
+  width: 100%;
+  height: 540px;
+  object-fit: cover;
+  border-radius: 22px;
+  display: block;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  z-index: 2;
+}
+
+.prev-btn {
+  left: 16px;
+}
+
+.next-btn {
+  right: 16px;
+}
+
+.booking-form-box {
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 28px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.booking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.booking-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.booking-header p {
+  margin: 0;
+  font-size: 1rem;
+  color: #444;
+}
+
+.booking-header p span {
+  color: #0d6efd;
+  font-weight: 700;
+}
+
+.date-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.date-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.date-box label,
+.counter-item label {
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.date-box input {
+  border: 1px solid #d8d8d8;
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.counter-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px 18px;
+  margin-bottom: 28px;
+}
+
+.counter-box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.counter-box button {
+  width: 38px;
+  height: 38px;
+  font-size: 20px;
+  padding: 0;
+  border-radius: 8px !important;
+}
+
+.counter-box span {
+  font-size: 1.8rem;
+  font-weight: 600;
+  min-width: 24px;
+  text-align: center;
+}
+
+.counter-item small {
+  display: block;
+  margin-top: 8px;
+  color: #666;
+}
+
+.confirm-booking-btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 10px !important;
+}
+
+.room-details-section {
+  max-width: 1250px;
+  margin: 35px auto 0;
+}
+
+.room-description {
+  font-size: 1.25rem;
+  line-height: 1.9;
+  color: #444;
+  margin-bottom: 34px;
+}
+
+.amenities-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #222;
+}
+
+.amenities-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px 80px;
+}
+
+.amenities-grid ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.amenities-grid li {
+  font-size: 1.35rem;
+  color: #444;
+  margin-bottom: 16px;
+  position: relative;
+  padding-left: 24px;
+}
+
+.amenities-grid li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #c79a4b;
+  font-weight: 700;
+}
+
+@media (max-width: 992px) {
+  .booking-container {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-main-image {
+    height: 420px;
+  }
+
+  .room-description {
+    font-size: 1.1rem;
+  }
+
+  .amenities-title {
+    font-size: 1.8rem;
+  }
+
+  .amenities-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .amenities-grid li {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .booking-page {
+    padding: 20px 12px 40px;
+  }
+
+  .booking-form-box {
+    padding: 20px;
+  }
+
+  .booking-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .booking-header h2 {
+    font-size: 1.7rem;
+  }
+
+  .date-section,
+  .counter-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-main-image {
+    height: 280px;
+  }
+
+  .room-description {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .amenities-title {
+    font-size: 1.6rem;
+  }
+
+  .amenities-grid li {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+}

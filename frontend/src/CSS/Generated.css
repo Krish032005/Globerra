@@ -1,0 +1,244 @@
+.generated-trip-page {
+  padding: 80px 40px 40px;
+  background: #f7f7f7;
+  min-height: 100vh;
+}
+
+.destination-banner {
+  margin-bottom: 30px;
+}
+
+.destination-banner-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.destination-banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.destination-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.15));
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px;
+  color: white;
+}
+
+.destination-banner-overlay h2 {
+  margin: 0;
+  font-size: 5rem;
+  font-weight: 700;
+}
+
+.destination-banner-overlay p {
+  margin-top: 6px;
+  font-size: 1.5rem;
+}
+
+.hotel-section,
+.trip-planned-section {
+  margin-bottom: 40px;
+}
+
+.hotel-section h3,
+.trip-planned-section h3 {
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.hotel-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.hotel-card {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.hotel-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.hotel-info {
+  padding: 14px;
+}
+
+.hotel-info h4 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.hotel-info p {
+  margin-bottom: 6px;
+  font-size: 0.92rem;
+}
+ 
+.day-block {
+  margin-bottom: 30px;
+}
+
+.day-block h4 {
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.places-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.places-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.place-card {
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  cursor: pointer;
+}
+
+.place-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 22px 45px rgba(0, 0, 0, 0.16);
+}
+
+.place-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.place-card:hover .place-img {
+  transform: scale(1.08);
+}
+
+.place-card-body {
+  padding: 18px 18px 20px;
+  transition: background 0.3s ease;
+}
+
+.place-card:hover .place-card-body {
+  background: linear-gradient(to bottom, #ffffff, #f8fbff);
+}
+
+.place-time {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #0d6efd;
+  margin-bottom: 10px;
+  letter-spacing: 0.4px;
+}
+
+.place-card h5 {
+  margin-bottom: 10px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1f1f1f;
+  transition: color 0.3s ease;
+}
+
+.place-card:hover h5 {
+  color: #0d6efd;
+}
+
+.place-card p {
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+.day-block h4 {
+  margin-bottom: 18px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2d2d2d;
+}
+
+.hotel-section {
+  margin-top: 40px;
+  padding: 10px 0;
+}
+
+.hotel-section h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.hotel-card {
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hotel-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.14);
+}
+
+.hotel-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.hotel-info {
+  padding: 16px;
+}
+
+.hotel-info h4 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.hotel-info p {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+
+
+
+@media (max-width: 768px) {
+  .generated-trip-page {
+    padding: 90px 16px 30px;
+  }
+
+  .destination-banner-image-wrapper {
+    height: 240px;
+  }
+
+  .places-grid {
+    grid-template-columns: 1fr;
+  }
+}

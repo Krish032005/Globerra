@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flight Booking UI</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div className="main">
+             <div className="sidebar">
+                <div className="logo">
+                    <Link className='nav-link' to="/"> <h1>Globerra</h1> </Link>
+                </div>
+                <div className="sidebar-items">
+                    <ul>
+                        <li>
+                            <Link className='nav-link' to="/"> 
+                            <i className="fa-solid fa-circle-user "></i>
+                            <h3>Profile</h3> 
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className='nav-link' to="/">
+                            <i className="fa-brands fa-hashnode"></i>
+                             <h3>My Trip</h3> 
+                             </Link>
+                        </li>
+                        <li>
+                            <Link className='nav-link' to="/"> 
+                            <i className="fa-brands fa-blogger"></i>
+                            <h3>Blog</h3> 
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className='nav-link' to="/">
+                            <i className="fa-solid fa-circle-info"></i> 
+                            <h3>About</h3> 
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
+            </div> 
+            
+            <div className="main-content">
+
+                <div className="search-box">
+
+                    <div className="location-set">
+                        <h3>Destination :</h3>
+                        <div className="from-to">
+
+                            <div className="input-box first">
+                            <p>From :</p>
+                            <input type="text" placeholder='Location' />
+                        </div>
+                        <div className="input-box">
+                            <p>To :</p>
+                            <input type="text" placeholder='Destination' />
+                        </div>
+
+                        </div>
+                        
+                    </div>
+
+                    <div className="location-set">
+                        <h3>Days :</h3>
+                        <div className="from-to">
+
+                            <div className="input-box">
+                            <p>From :</p>
+                            <input type="number" placeholder='Location' />
+                        </div>
+                        <div className="input-box">
+                            <p>To :</p>
+                            <input type="number" placeholder='Destination' />
+                        </div>
+                        
+                        </div>
+                        
+                    </div>
+
+
+                </div>
+                
+            </div>
+        </div>
+
+</body>
+</html>
