@@ -37,7 +37,7 @@ app.use("/api/bookings", bookingRoutes);
 app.use("/api/payments", paymentRoutes);
 app.use("/api/reviews", reviewRoutes);
 app.use(express.json());
-app.use("/api/reviews", blogRoutes);
+app.use("/api/blogs", blogRoutes);
 
 app.get("/api/test-gemini", async (req, res) => {
   try {
