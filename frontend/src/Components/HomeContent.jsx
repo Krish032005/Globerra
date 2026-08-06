@@ -4,7 +4,7 @@ import "../CSS/HomeContent.css";
 import img1 from '../assets/BaliBeach.avif';
 import img11 from '../assets/Tokyo.avif';
 import img12 from '../assets/Barcelona.avif';
-import img2 from '../assets/Muntfuji.avif';
+import img2 from '../assets/MuntFuji.avif';
 import { useNavigate } from 'react-router-dom';
 
 export default function HomeContent() {
