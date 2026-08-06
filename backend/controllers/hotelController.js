@@ -1,74 +1,124 @@
-const db = require("../config/db");
+const Hotel = require("../models/Hotel");
+const Booking = require("../models/Booking");
 
-exports.getHotels = (req, res) => {
-   const limit = parseInt(req.query.limit) || 5;
+exports.getHotels = async (req, res) => {
+  try {
+    const limit = parseInt(req.query.limit);
 
-    let sql = "SELECT * FROM hotels";
+    let hotels;
 
-  if (limit) {
-    sql += " LIMIT ?";
+    if (limit && limit > 0) {
+      hotels = await Hotel.find().limit(limit);
+    } else {
+      hotels = await Hotel.find();
+    }
+
+    res.json(hotels);
+
+  } catch (error) {
+
+    console.error(error);
+
+    res.status(500).json({
+      message: "Failed to fetch hotels",
+    });
+
   }
-  
-  db.query("SELECT * FROM hotels", (err, result) => {
-    if (err) {
-      return res.status(500).json({ message: "Failed to fetch hotels" });
-    }
-    res.json(result);
-  });
 };
 
-exports.getHotelById = (req, res) => {
-  const { id } = req.params;
+exports.getHotelById = async (req, res) => {
 
-  db.query("SELECT * FROM hotels WHERE id = ?", [id], (err, result) => {
-    if (err) return res.status(500).json({ message: "Failed to fetch hotel" });
-    if (result.length === 0) return res.status(404).json({ message: "Hotel not found" });
-    res.json(result[0]);
-  });
-};
+  try {
 
-exports.getHotelsByDestination = (req, res) => {
-  const { destination } = req.params;
+    const hotel = await Hotel.findById(req.params.id);
 
-  const sql = "SELECT * FROM hotels WHERE LOWER(location) = LOWER(?)";
-  db.query(sql, [destination], (err, result) => {
-    if (err) return res.status(500).json({ message: "Database error" });
-    res.json(result);
-  });
-};
-
-// const db = require("../config/db");
-
-exports.getBookingsByUser = (req, res) => {
-  const { userId } = req.params;
-
-  const sql = `
-    SELECT 
-      b.id,
-      b.user_id,
-      b.hotel_id,
-      b.check_in,
-      b.check_out,
-      b.adults,
-      b.children,
-      b.rooms,
-      b.total_amount,
-      h.name AS hotel_name,
-      h.location,
-      h.room_image,
-      h.image_url
-    FROM bookings b
-    JOIN hotels h ON b.hotel_id = h.id
-    WHERE b.user_id = ?
-    ORDER BY b.id DESC
-  `;
-
-  db.query(sql, [userId], (err, result) => {
-    if (err) {
-      console.error("Error fetching user bookings:", err);
-      return res.status(500).json({ message: "Failed to fetch user bookings" });
+    if (!hotel) {
+      return res.status(404).json({
+        message: "Hotel not found",
+      });
     }
 
-    res.json(result);
-  });
+    res.json(hotel);
+
+  } catch (error) {
+
+    console.error(error);
+
+    res.status(500).json({
+      message: "Failed to fetch hotel",
+    });
+
+  }
+
+};
+
+exports.getHotelsByDestination = async (req, res) => {
+
+  try {
+
+    const destination = req.params.destination;
+
+    const hotels = await Hotel.find({
+      location: {
+        $regex: new RegExp(`^${destination}$`, "i"),
+      },
+    });
+
+    res.json(hotels);
+
+  } catch (error) {
+
+    console.error(error);
+
+    res.status(500).json({
+      message: "Database error",
+    });
+
+  }
+
+};
+
+exports.getBookingsByUser = async (req, res) => {
+
+  try {
+
+    const bookings = await Booking.find({
+      user_id: req.params.userId,
+    })
+      .populate({
+        path: "hotel_id",
+        select: "hotel_name location image_url price_per_night",
+      })
+      .sort({
+        createdAt: -1,
+      });
+
+    const formattedBookings = bookings.map((booking) => ({
+      _id: booking._id,
+      user_id: booking.user_id,
+      hotel_id: booking.hotel_id?._id,
+      check_in: booking.check_in,
+      check_out: booking.check_out,
+      adults: booking.adults,
+      children: booking.children,
+      rooms: booking.rooms,
+      total_amount: booking.total_amount,
+      hotel_name: booking.hotel_id?.hotel_name,
+      location: booking.hotel_id?.location,
+      image_url: booking.hotel_id?.image_url,
+      price_per_night: booking.hotel_id?.price_per_night,
+    }));
+
+    res.json(formattedBookings);
+
+  } catch (error) {
+
+    console.error(error);
+
+    res.status(500).json({
+      message: "Failed to fetch user bookings",
+    });
+
+  }
+
 };

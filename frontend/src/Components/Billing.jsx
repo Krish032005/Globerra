@@ -59,7 +59,7 @@ export default function Billing() {
       await API.put(`/bookings/${bookingId}/customer`, customer);
 
       const orderRes = await API.post("/payments/create-order", {
-        booking_id: Number(bookingId),
+        booking_id: bookingId,
       });
 
       const paymentSessionId = orderRes.data.payment_session_id;
@@ -70,15 +70,15 @@ export default function Billing() {
       }
 
       const cashfree = window.Cashfree({ mode: "sandbox" });
-
       const result = await cashfree.checkout({
         paymentSessionId,
         redirectTarget: "_modal",
       });
-
+      
+      console.log(result);
       if (result) {
         const verifyRes = await API.post("/payments/verify", {
-          booking_id: Number(bookingId),
+          booking_id: bookingId,
           order_id: orderRes.data.order_id,
           payment_method: "Cashfree",
         });

@@ -50,8 +50,18 @@ export default function Booking() {
 
   const handleBooking = async () => {
     try {
+      console.log("Sending Booking Data:", {
+  hotel_id: hotel?._id,
+  check_in: checkIn,
+  check_out: checkOut,
+  adults: adult,
+  children,
+  rooms,
+  extra_bed: extraBed,
+  total_amount: totalAmount,
+});
       const res = await API.post("/bookings", {
-        hotel_id: Number(hotelId),
+        hotel_id: hotel._id,
         check_in: checkIn,
         check_out: checkOut,
         adults: adult,
@@ -60,7 +70,7 @@ export default function Booking() {
         extra_bed: extraBed,
         total_amount: totalAmount,
       });
-
+      console.log(checkIn, checkOut);
       alert("Booking successful");
       navigate(`/billing/${res.data.bookingId}`);
     } catch (err) {
@@ -167,7 +177,8 @@ export default function Booking() {
            <h2 className="amenities-title">Room Amenities</h2>
 
            <div className="amenities-grid">
-             <ul>               <li>Free Wi-Fi</li>
+             <ul>               
+              <li>Free Wi-Fi</li>
                <li>Smart TV</li>
                <li>Minibar</li>
                <li>Tea & Coffee Maker</li>

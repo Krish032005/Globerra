@@ -57,7 +57,7 @@ export default function Hotel() {
 
         <div className="hotel-card-container">
           {hotels.map((hotel) => (
-            <div className="hotel-card" key={hotel.id}>
+            <div className="hotel-card" key={hotel._id}>
               <div className="hotel-card-image">
                 <img src={hotel.image_url} alt={hotel.hotel_name} />
                 <span className="hotel-badge">{hotel.tag || "Available"}</span>
@@ -68,7 +68,7 @@ export default function Hotel() {
                 <p className="hotel-location">{hotel.location}</p>
                 <div className="hotel-card-bottom">
                   <span className="hotel-price">₹{hotel.price_per_night} / night</span>
-                  <button onClick={() => navigate(`/booking/${hotel.id}`)}>
+                  <button onClick={() => navigate(`/booking/${hotel._id}`)}>
                     View Details
                   </button>
                 </div>

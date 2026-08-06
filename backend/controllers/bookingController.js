@@ -1,97 +1,144 @@
-const db = require("../config/db");
+const Booking = require("../models/Booking");
+const Hotel = require("../models/Hotel");
 
-exports.createBooking = (req, res) => {
-  const user_id = req.user.id;
-  const {
-    hotel_id,
-    check_in,
-    check_out,
-    adults,
-    children,
-    rooms,
-    extra_bed,
-    total_amount,
-  } = req.body;
+exports.createBooking = async (req, res) => {
+  try {
+    const user_id = req.user.id;
 
-  const sql = `
-    INSERT INTO bookings
-    (user_id, hotel_id, check_in, check_out, adults, children, rooms, extra_bed, total_amount)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-  `;
+    const {
+      hotel_id,
+      check_in,
+      check_out,
+      adults,
+      children,
+      rooms,
+      extra_bed,
+      total_amount,
+    } = req.body;
+console.log("Request Body:", req.body);
+    const booking = await Booking.create({
+      user_id,
+      hotel_id,
+      check_in,
+      check_out,
+      adults,
+      children,
+      rooms,
+      extra_bed,
+      total_amount,
+    });
 
-  db.query(
-    sql,
-    [user_id, hotel_id, check_in, check_out, adults, children, rooms, extra_bed, total_amount],
-    (err, result) => {
-      if (err) return res.status(500).json({ message: "Booking failed" });
+    res.status(201).json({
+      message: "Booking successful",
+      bookingId: booking._id,
+    });
 
-      res.status(201).json({
-        message: "Booking successful",
-        bookingId: result.insertId,
+  } catch (error) {
+
+    console.log(error);
+
+    res.status(500).json({
+      message: "Booking failed",
+    });
+
+  }
+};
+
+exports.getBookingById = async (req, res) => {
+
+  try {
+
+    const booking = await Booking.findById(req.params.id)
+      .populate("hotel_id");
+
+    if (!booking) {
+      return res.status(404).json({
+        message: "Booking not found",
       });
     }
-  );
+
+    res.json(booking);
+
+  } catch (error) {
+
+    console.log(error);
+
+    res.status(500).json({
+      message: "Failed to fetch booking",
+    });
+
+  }
+
 };
 
-exports.getBookingById = (req, res) => {
-  const bookingId = req.params.id;
+exports.getBookingsByUser = async (req, res) => {
 
-  const sql = `
-    SELECT b.*, h.hotel_name, h.location, h.price_per_night, h.image_url
-    FROM bookings b
-    JOIN hotels h ON b.hotel_id = h.id
-    WHERE b.id = ?
-  `;
+  try {
 
-  db.query(sql, [bookingId], (err, result) => {
-    if (err) return res.status(500).json({ message: "Failed to fetch booking" });
-    if (result.length === 0) return res.status(404).json({ message: "Booking not found" });
-    res.json(result[0]);
-  });
+    const bookings = await Booking.find({
+      user_id: req.params.userId,
+    })
+      .populate("hotel_id")
+      .sort({
+        createdAt: -1,
+      });
+
+    res.json(bookings);
+
+  } catch (error) {
+
+    console.log(error);
+
+    res.status(500).json({
+      message: "Failed to fetch user bookings",
+    });
+
+  }
+
 };
 
-exports.getBookingsByUser = (req, res) => {
-  const userId = req.params.userId;
+exports.updateBookingCustomer = async (req, res) => {
 
-  const sql = `
-    SELECT 
-      b.*, 
-      h.hotel_name, 
-      h.location, 
-      h.price_per_night, 
-      h.image_url
-    FROM bookings b
-    JOIN hotels h ON b.hotel_id = h.id
-    WHERE b.user_id = ?
-    ORDER BY b.id DESC
-  `;
+  try {
 
-  db.query(sql, [userId], (err, result) => {
-    if (err) {
-      return res.status(500).json({ message: "Failed to fetch user bookings" });
+    const {
+      guest_name,
+      guest_email,
+      guest_phone,
+      guest_address,
+    } = req.body;
+
+    const booking = await Booking.findByIdAndUpdate(
+      req.params.id,
+      {
+        guest_name,
+        guest_email,
+        guest_phone,
+        guest_address,
+      },
+      {
+        new: true,
+      }
+    );
+
+    if (!booking) {
+      return res.status(404).json({
+        message: "Booking not found",
+      });
     }
 
-    res.json(result);
-  });
-};
+    res.json({
+      message: "Customer details updated successfully",
+    });
 
-exports.updateBookingCustomer = (req, res) => {
-  const bookingId = req.params.id;
-  const { guest_name, guest_email, guest_phone, guest_address } = req.body;
+  } catch (error) {
 
-  const sql = `
-    UPDATE bookings
-    SET guest_name = ?, guest_email = ?, guest_phone = ?, guest_address = ?
-    WHERE id = ?
-  `;
+    console.log(error);
 
-  db.query(
-    sql,
-    [guest_name, guest_email, guest_phone, guest_address, bookingId],
-    (err) => {
-      if (err) return res.status(500).json({ message: "Failed to update booking details" });
+    res.status(500).json({
+      message: "Failed to update booking details",
+    });
 
-      res.json({ message: "Customer details updated successfully" });
-    }
-  );
+  }
+
 };
