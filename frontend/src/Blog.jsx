@@ -10,7 +10,7 @@ export default function Blog() {
 
   const fetchReviews = async () => {
   try {
-    const res = await API.get("/reviews");
+    const res = await API.get("/blogs");
 
     console.log("GET REVIEWS RESPONSE:", res.data);
 
