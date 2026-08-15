@@ -53,7 +53,7 @@ export default function Blog() {
 
       console.log("REVIEW DATA:", reviewData);
 
-      const res = await API.post("/reviews", reviewData);
+      const res = await API.post("/blogs", reviewData);
 
       console.log("REVIEW RESPONSE:", res.data);
 
