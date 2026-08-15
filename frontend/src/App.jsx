@@ -11,7 +11,7 @@ import Booking from "./Components/Booking";
 import Billing from "./Components/Billing";
 import Generated from "./Components/Generated";
 import Userprofile from "./Components/Userprofile";
-import "./App.css";
+
 
 function App() {
   return (

@@ -1,4 +1,4 @@
-.blog-nav{
+/* .blog-nav{
     background: 
     linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
     url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e");
@@ -129,4 +129,239 @@
   color: white;
   font-size: 1rem;
   font-weight: 500;
+} */
+
+
+
+
+.blog-nav {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.blog-body {
+  width: 100%;
+  padding: 70px 8%;
+}
+
+.blog-heading {
+  font-size: 42px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.blog-review-form {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.blog-textarea {
+  width: 100%;
+  min-height: 140px;
+  resize: vertical;
+  padding: 16px;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+.blog-submit {
+  display: block;
+  margin: 15px auto 0;
+  padding: 10px 30px;
+  border-radius: 8px;
+}
+
+.review-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 70px auto 0;
+}
+
+.feedback-heading {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 35px;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.review-card {
+  width: 100%;
+  padding: 25px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.review-top {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.review-avatar {
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.review-user-info h5 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.review-user-info p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #777;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.review-message {
+  min-height: 80px;
+  line-height: 1.6;
+  color: #333;
+  word-break: break-word;
+}
+
+.review-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+
+  margin-top: 20px;
+  padding-top: 15px;
+
+  border-top: 1px solid #eee;
+}
+
+.review-stars {
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+
+.review-bottom span {
+  font-size: 12px;
+  color: #777;
+}
+
+.no-review-text {
+  text-align: center;
+  width: 100%;
+  color: #777;
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .blog-body {
+    padding: 60px 5%;
+  }
+
+  .blog-heading {
+    font-size: 36px;
+  }
+
+  .review-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .blog-body {
+    padding: 40px 18px;
+  }
+
+  .blog-heading {
+    font-size: 28px;
+    line-height: 1.25;
+    margin-bottom: 30px;
+  }
+
+  .blog-textarea {
+    min-height: 120px;
+    font-size: 15px;
+  }
+
+  .blog-submit {
+    width: 100%;
+    margin-top: 12px;
+  }
+
+  .review-container {
+    margin-top: 50px;
+  }
+
+  .feedback-heading {
+    font-size: 25px;
+    margin-bottom: 25px;
+  }
+
+  .review-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .review-card {
+    padding: 20px;
+  }
+
+  .review-top {
+    gap: 12px;
+  }
+
+  .review-avatar {
+    width: 45px;
+    height: 45px;
+    min-width: 45px;
+    font-size: 15px;
+  }
+
+  .review-user-info h5 {
+    font-size: 16px;
+  }
+
+  .review-message {
+    font-size: 14px;
+  }
+
+  .review-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .review-bottom span {
+    font-size: 11px;
+  }
+}
+.blog-nav{
+    background: 
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e");
+  background-size: cover;
+  background-position: center;
 }
