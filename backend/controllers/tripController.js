@@ -3,6 +3,7 @@ const axios = require("axios");
 require("dotenv").config();
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-3.7-flash";
 
 exports.createTrip = async (req, res) => {
   try {
@@ -42,21 +43,17 @@ exports.createTrip = async (req, res) => {
       message: "Trip saved successfully",
       tripId: trip._id,
     });
-
   } catch (error) {
-
     console.error(error);
 
     res.status(500).json({
       message: "Failed to save trip",
     });
-
   }
 };
 
 exports.generateTrip = async (req, res) => {
   try {
-
     const {
       user_id,
       boarding,
@@ -112,6 +109,8 @@ Format:
 Trip Details:
 Boarding: ${boarding}
 Destination: ${destination}
+Travel Date: ${travel_date}
+Return Date: ${return_date}
 Days: ${days}
 Budget: ${budget}
 Travellers: ${travellers}
@@ -119,17 +118,17 @@ Interests: ${interests || "General sightseeing"}
 `;
 
     const geminiResponse = await axios.post(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`,
       {
-        contents: [
-          {
-            parts: [
-              {
-                text: prompt,
-              },
-            ],
-          },
-        ],
+        contents: [{ parts: [{ text: prompt }] }],
+        generationConfig: { responseMimeType: "application/json" },
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "x-goog-api-key": GEMINI_API_KEY,
+        },
+        timeout: 60000,
       }
     );
 
@@ -139,23 +138,17 @@ Interests: ${interests || "General sightseeing"}
     let generatedPlan;
 
     try {
-
       const cleanText = generatedText
         .replace(/```json/g, "")
         .replace(/```/g, "")
         .trim();
 
-      generatedPlan = JSON.parse(
-        cleanText.match(/\{[\s\S]*\}/)[0]
-      );
-
+      generatedPlan = JSON.parse(cleanText.match(/\{[\s\S]*\}/)[0]);
     } catch (err) {
-
       return res.status(500).json({
         message: "Gemini returned invalid JSON",
         raw: generatedText,
       });
-
     }
 
     const trip = await Trip.create({
@@ -176,23 +169,18 @@ Interests: ${interests || "General sightseeing"}
       tripId: trip._id,
       trip,
     });
-
   } catch (error) {
-
     console.error(error.response?.data || error.message);
 
     res.status(500).json({
       message: "Trip generation failed",
       error: error.response?.data || error.message,
     });
-
   }
 };
 
 exports.getTripById = async (req, res) => {
-
   try {
-
     const trip = await Trip.findById(req.params.id);
 
     if (!trip) {
@@ -202,21 +190,15 @@ exports.getTripById = async (req, res) => {
     }
 
     res.json(trip);
-
   } catch (error) {
-
     res.status(500).json({
       message: "Failed to fetch trip",
     });
-
   }
-
 };
 
 exports.getLatestTripByDestination = async (req, res) => {
-
   try {
-
     const trip = await Trip.findOne({
       destination: req.params.destination,
     }).sort({
@@ -230,21 +212,15 @@ exports.getLatestTripByDestination = async (req, res) => {
     }
 
     res.json(trip);
-
   } catch (error) {
-
     res.status(500).json({
       message: "Failed to fetch latest trip",
     });
-
   }
-
 };
 
 exports.getTripsByUser = async (req, res) => {
-
   try {
-
     const trips = await Trip.find({
       user_id: req.params.userId,
     }).sort({
@@ -252,15 +228,11 @@ exports.getTripsByUser = async (req, res) => {
     });
 
     res.json(trips);
-
   } catch (error) {
-
     console.error(error);
 
     res.status(500).json({
       message: "Failed to fetch user trips",
     });
-
   }
-
 };
