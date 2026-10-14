@@ -3,7 +3,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 export const generateTripPlan = async ({ destination, days, budget, travellers }) => {
-  const model = genAI.getGenerativeModel({ model: "gemini-3.5-flash-lite" });
+  const model = genAI.getGenerativeModel({ model: "gemini-3.8-flash" });
   
 
   const prompt = `
