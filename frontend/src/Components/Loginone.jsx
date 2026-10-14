@@ -29,6 +29,7 @@ export default function Loginone() {
     if (password !== confirmPassword) {
       return alert("Passwords do not match");
     }
+    
 
     try {
       const res = await API.post("/auth/register", {
