@@ -30,7 +30,7 @@ export default function Loginone() {
       return alert("Passwords do not match");
     }
     
-
+alert
     try {
       const res = await API.post("/auth/register", {
         full_name: fullName,
@@ -65,8 +65,8 @@ export default function Loginone() {
       localStorage.setItem("user", JSON.stringify(res.data.user));
 
       alert("Login successful");
-      navigate("/dashboard");
-      window.location.reload();
+      
+      window.location.replace("/dashboard");
     } catch (err) {
       alert(err.response?.data?.message || "Login failed");
     }
