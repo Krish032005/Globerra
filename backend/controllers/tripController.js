@@ -3,7 +3,7 @@ const axios = require("axios");
 require("dotenv").config();
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-3.7-flash";
+const GEMINI_MODEL = process.env.GEMINI_MODEL ;
 
 exports.createTrip = async (req, res) => {
   try {
