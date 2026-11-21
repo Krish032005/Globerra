@@ -265,7 +265,7 @@ const envModel = process.env.GEMINI_MODEL?.trim();
 const GEMINI_MODEL =
   envModel && envModel !== "undefined" && envModel !== "null"
     ? envModel
-    : "gemini-3.8-flash";
+    : "gemini-3.8-flash-lite-tts";
 
 console.log("Gemini model in use:", GEMINI_MODEL);
 
