@@ -392,7 +392,7 @@ Interests: ${interests || "General sightseeing"}
           "Content-Type": "application/json",
           "x-goog-api-key": GEMINI_API_KEY,
         },
-        timeout: 60000,
+        // timeout: 60000,
       }
     );
 
