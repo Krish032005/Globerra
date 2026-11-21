@@ -25,3 +25,5 @@ router.get("/latest/:destination", getLatestTripByDestination);
 router.get("/:id", getTripById);
 
 module.exports = router;
+
+
